@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TaskCalendar</string>
+    <string name="saveTaskDetails">Save</string>
+    <string name="new_task_details">New Task details</string>
+    <string name="tasks">Tasks</string>
+</resources>
