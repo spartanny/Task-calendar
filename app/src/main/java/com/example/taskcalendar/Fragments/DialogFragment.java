@@ -79,4 +79,9 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
         return builder.create();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((MainActivity) getActivity()).updateTask();
+    }
 }
