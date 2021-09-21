@@ -3,4 +3,8 @@
     <string name="saveTaskDetails">Save</string>
     <string name="new_task_details">New Task details</string>
     <string name="tasks">Tasks</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="created">Created</string>
+    <string name="upcoming">Upcoming</string>
 </resources>

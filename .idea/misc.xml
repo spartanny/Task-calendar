@@ -3,12 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/drawable/ic_baseline_alarm_on_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/drawable/ic_created.xml" value="0.2703125" />
+        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/drawable/ic_upcoming.xml" value="0.2703125" />
         <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/drawable/splash_logo.xml" value="0.2703125" />
-        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/layout/activity_main.xml" value="0.517774343122102" />
         <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/layout/activity_new_task.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/layout/edit_task_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/layout/fragment_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/layout/new_task.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/layout/task_layout.xml" value="0.536" />
+        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/menu/navigation_items.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Tanishq Malhotra/AndroidStudioProjects/TaskCalendar/app/src/main/res/menu/navigation_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

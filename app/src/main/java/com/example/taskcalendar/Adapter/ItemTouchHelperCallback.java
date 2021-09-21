@@ -13,7 +13,7 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.SimpleCallback {
     }
 
     public ItemTouchHelperCallback(ToDoAdapter adapter) {
-        super(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT);
+        super(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
         mAdapter = adapter;
     }
 
@@ -24,6 +24,9 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-        mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+        if (direction == ItemTouchHelper.LEFT)
+            mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+        else
+            mAdapter.onItemEdit(viewHolder.getAdapterPosition());
     }
 }

@@ -1,14 +1,19 @@
 package com.example.taskcalendar.Adapter;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.taskcalendar.MainActivity;
+import com.example.taskcalendar.Fragments.DialogFragment;
+import com.example.taskcalendar.Model.EditTextViewModel;
 import com.example.taskcalendar.Model.ToDoModel;
 import com.example.taskcalendar.R;
 import com.example.taskcalendar.Utils.DatabaseHandler;
@@ -19,12 +24,22 @@ import java.util.List;
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> implements ItemTouchHelperAdapter {
 
     private List<ToDoModel> todoList;
-    private DatabaseHandler db ;
+    private DatabaseHandler db;
+    private DialogFragment dialogFragment;
+    private Bundle bundle;
+    private FragmentTransaction ft;
+    private Context context;
+    private EditTextViewModel model ;
 
-    public ToDoAdapter(DatabaseHandler db, List<ToDoModel> taskList) {
+    public ToDoAdapter(DatabaseHandler db, List<ToDoModel> taskList, DialogFragment dialogFragment, Context context, EditTextViewModel model) {
         this.db = db;
         this.todoList = taskList;
+        this.dialogFragment = dialogFragment;
+        this.context = context;
+        this.model = model;
+        this.bundle = new Bundle();
     }
+
 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -47,10 +62,21 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> im
     @Override
     public void onItemDismiss(int position) {
         ToDoModel task = todoList.get(position);
-        Log.d("Itemdismiss Position", String.valueOf(task.getId()));
+        Log.d("ItemDismiss Position", String.valueOf(task.getId()));
         todoList.remove(position);
         notifyItemRemoved(position);
         deleteTask(task.getId());
+    }
+
+    @Override
+    public void onItemEdit(int position) {
+        ToDoModel list = todoList.get(position);
+        bundle.putString("text",list.getTaskDescription());
+        bundle.putInt("position",list.getId());
+        dialogFragment.setArguments(bundle);
+        this.ft = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
+        dialogFragment.show(ft, "Dialog");
+
     }
 
     public void setTasks(List<ToDoModel> todoList) {
