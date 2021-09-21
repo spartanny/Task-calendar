@@ -1,5 +1,6 @@
 package com.example.taskcalendar.Utils;
 
+import static android.content.ContentValues.TAG;
 import static java.util.Collections.reverse;
 
 import android.annotation.SuppressLint;
@@ -31,7 +32,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + STATUS + " INTEGER, "
             + SCHEDULE_TIME + " INTEGER, "
             + CREATION_TIME + " INTEGER )";
-
 
     private SQLiteDatabase db;
 
@@ -114,4 +114,38 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void deleteTask(int id) {
         db.delete(TODO_TABLE, ID + "=?", new String[]{String.valueOf(id)});
     }
+
+    @SuppressLint("Range")
+    public List<ToDoModel> queryTime(int id) {
+        String parameter = null;
+        List<ToDoModel> queryList = new ArrayList<>();
+
+        if (id == 1)
+            parameter = CREATION_TIME;
+        else if (id == 2)
+            parameter = SCHEDULE_TIME;
+
+        db.beginTransaction();
+        Cursor cur = null;
+        try {
+            cur = db.query(TODO_TABLE, null, null, null, null, null, parameter + " ASC");
+            if (cur.moveToFirst()) {
+                do {
+                    ToDoModel task = new ToDoModel();
+                    task.setId(cur.getInt(cur.getColumnIndex(ID)));
+                    task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
+                    task.setTaskDescription(cur.getString(cur.getColumnIndex(TASK_DESCRIPTION)));
+                    task.setCreationTime((cur.getLong(cur.getColumnIndex(parameter))));
+                    queryList.add(task);
+                } while (cur.moveToNext());
+            }
+        } finally {
+            db.endTransaction();
+            assert cur != null;
+            cur.close();
+        }
+        Log.d(TAG, "queryTime: Size of queryList is : "+ queryList.size());
+        return queryList;
+    }
+
 }
